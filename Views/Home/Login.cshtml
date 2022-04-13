@@ -1,0 +1,27 @@
+﻿@model UserManagement.Models.Login
+@{
+    ViewData["Title"] = "Sign in";
+}
+
+<h2>Sign in</h2>
+<form method="post" asp-controller="Home" asp-action="Login"
+      asp-route-returnUrl="@Model.ReturnUrl">
+    <div asp-validation-summary="ModelOnly"></div>
+    <div>
+        <label class="text-muted" asp-for="UserName">Username </label>
+        <input class="form-control" asp-for="UserName" placeholder="username" />
+        <span asp-validation-for="UserName"></span>
+    </div>
+    <div>
+        <label class="text-muted" asp-for="Password">Password </label>
+        <input class="form-control" asp-for="Password" placeholder="password" />
+        <span asp-validation-for="Password"></span>
+    </div>
+    <div>
+        <label class="text-muted" asp-for="RememberMe"> Remember me</label>
+        <input asp-for="RememberMe" />
+    </div>
+    <div>
+        <input type="submit" class="btn btn-outline-primary" value="Sign in" />
+    </div>
+</form>

@@ -1,0 +1,47 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - UserManagement</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+</head>
+<body style="background-color: #181a1b;color:whitesmoke;">
+    <header>
+        <nav class="navbar navbar-expand-sm bg-dark">
+            <div class="container">
+                <a class="navbar-brand" asp-controller="Home" asp-action="Index">UserManagement</a>
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-end">
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <form class="form-inline my-2 my-lg-0" method="post" asp-controller="Home" asp-action="Logout">
+                            <label class="text-muted">Logged in as @User.Identity.Name </label>
+                            <input type="submit" class="btn btn-link" value="Logout" />
+                        </form>
+                    }
+                    else
+                    {
+                        <a class="nav-link text-light" asp-controller="Home" asp-action="Login">Sign in</a>
+                        <a class="nav-link text-light" asp-controller="Home" asp-action="Register">Sign up</a>
+                    }
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="border-top footer text-muted text-center">
+        <div class="container">&copy; 2022 - UserManagement</div>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
